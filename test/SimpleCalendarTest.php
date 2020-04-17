@@ -1,6 +1,6 @@
 <?php
 
-use donatj\SimpleCalendar;
+use hugosav\SimpleCalendar;
 
 class SimpleCalendarTest extends PHPUnit_Framework_TestCase {
 
