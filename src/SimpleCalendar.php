@@ -143,8 +143,8 @@ class SimpleCalendar {
 	 */
 	public function addDailyHtml( $html, $startDate, $endDate = null ) {
 		static $htmlCount = 0;
-
 		$start = $this->parseDate($startDate);
+
 		if( !$start ) {
 			throw new \InvalidArgumentException('invalid start time');
 		}
@@ -270,19 +270,15 @@ TAG
 
 			$out .= '<td' . ($isToday ? ' class="' . $this->classes['today'] . '"' : '') . '>';
 
-			$out .= sprintf('<time datetime="%s">%d</time>', $date->format('Y-m-d'), $i);
+
 
 			$dailyHTML = null;
 			if( isset($this->dailyHtml[$now['year']][$now['mon']][$i]) ) {
 				$dailyHTML = $this->dailyHtml[$now['year']][$now['mon']][$i];
+				$out .= sprintf('<time class="events" datetime="%s">%d</time>', $date->format('Y-m-d'), $i);
 			}
-
-			if( is_array($dailyHTML) ) {
-				$out .= '<div class="' . $this->classes['events'] . '">';
-				foreach( $dailyHTML as $dHtml ) {
-					$out .= sprintf('<div class="%s">%s</div>', $this->classes['event'], $dHtml);
-				}
-				$out .= '</div>';
+			else {
+				$out .= sprintf('<time datetime="%s">%d</time>', $date->format('Y-m-d'), $i);
 			}
 
 			$out .= '</td>';
