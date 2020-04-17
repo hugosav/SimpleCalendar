@@ -22,7 +22,7 @@
 	],
 	"autoload"   : {
 		"psr-4": {
-			"donatj\\": "src/"
+			"hugosav\\": "src/"
 		}
 	}
 }
